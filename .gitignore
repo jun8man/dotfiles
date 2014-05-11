@@ -1,0 +1,5 @@
+# ignored file list
+*~
+
+# .gitignore should be under control.
+!.gitignore

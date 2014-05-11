@@ -50,13 +50,31 @@ zstyle ':completion:*:default' menu select=1
 # 補完の時に大文字小文字を区別しない
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
+#for zsh-completions
+case $OSTYPE in
+    darwin*)
+        fpath=(/usr/local/share/zsh-completions $fpath)
+        # 有効にする
+        autoload -Uz compinit
+        compinit -u
+        ;;
+esac
+
 #------------------------
 # エイリアス
 #------------------------
-alias vi='/usr/bin/vim'
-alias ls='ls -F --color=auto'
-alias ll='ls -al'
-alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+case $OSTYPE in
+    darwin*)
+        alias ls='ls -FG'
+        alias ll='ls -al'
+        ;;
+    cygwin*)
+        alias vi='/usr/bin/vim'
+        alias ls='ls -F --color=auto'
+        alias ll='ls -al'
+        alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+        ;;
+esac
 
 # プロンプトのカラー表示を有効
 autoload -U colors
@@ -72,12 +90,16 @@ export LANG=ja_JP.UTF-8
 # export OUTPUT_CHARSET=sjis
 
 # ssh-agent 用
-agentPID=`ps gxww|grep "ssh-agent]*$"|awk '{print $1}'`
-agentSOCK=`/bin/ls -t /tmp/ssh*/agent*|head -1`
-if [ "$agentPID" = "" -o "$agentSOCK" = "" ]; then
-    unset SSH_AUTH_SOCK SSH_AGENT_PID
-    eval `ssh-agent`
-else
-    export SSH_AGENT_PID=$agentPID
-    export SSH_AUTH_SOCK=$agentSOCK
-fi
+case $OSTYPE in
+    cygwin*)
+        agentPID=`ps gxww|grep "ssh-agent]*$"|awk '{print $1}'`
+        agentSOCK=`/bin/ls -t /tmp/ssh*/agent*|head -1`
+        if [ "$agentPID" = "" -o "$agentSOCK" = "" ]; then
+            unset SSH_AUTH_SOCK SSH_AGENT_PID
+            eval `ssh-agent`
+        else
+            export SSH_AGENT_PID=$agentPID
+            export SSH_AUTH_SOCK=$agentSOCK
+        fi
+        ;;
+esac
