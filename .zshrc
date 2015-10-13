@@ -22,8 +22,9 @@ setopt nolistbeep
 # %n ユーザ名
 # %m ホスト名
 # %d ディレクトリ名
-PROMPT='%F{3}%n@%m%f# '
-RPROMPT='[%F{5}%d%f]'
+PROMPT='[%F{5}%d%f]
+%F{3}%n@%m%f# '
+# setopt transient_rprompt
 
 #-----------------------
 # シェル変数周り
@@ -77,12 +78,13 @@ case $OSTYPE in
 esac
 
 # プロンプトのカラー表示を有効
-autoload -U colors
-colors
+source ./archive/mintty-colors-solarized-master/sol.dark
+# autoload -U colors
+# colors
 
-export PATH
-PAtH=/cygdrive/c/emacs-24.3/bin/:$PATH
-export PATH
+# export PATH
+# PAtH=/cygdrive/c/emacs-24.3/bin/:$PATH
+# export PATH
 
 export LANG=ja_JP.UTF-8
 # export LANG=ja_JP.SJIS
@@ -103,3 +105,6 @@ case $OSTYPE in
         fi
         ;;
 esac
+
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
