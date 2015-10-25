@@ -74,11 +74,13 @@ case $OSTYPE in
         alias ls='ls -F --color=auto'
         alias ll='ls -al'
         alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+        alias ipconfig='ipconfig | nkf -w'
+        alias ifconfig='ipconfig | nkf -w'
         ;;
 esac
 
 # プロンプトのカラー表示を有効
-source ./archive/mintty-colors-solarized-master/sol.dark
+source ~/archive/mintty-colors-solarized-master/sol.dark
 # autoload -U colors
 # colors
 
