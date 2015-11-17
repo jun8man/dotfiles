@@ -1,6 +1,6 @@
 [user]
-	name = junya
-	email = junya0220yamashita@gmail.com
+    name = junya
+    email = junya0220yamashita@gmail.com
 [include]
 #    path = .gitconfig.local
 [core]

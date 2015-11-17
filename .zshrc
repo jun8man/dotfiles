@@ -80,9 +80,14 @@ case $OSTYPE in
 esac
 
 # プロンプトのカラー表示を有効
-source ~/archive/mintty-colors-solarized-master/sol.dark
-# autoload -U colors
-# colors
+case $OSTYPE in
+    darwin*)
+        # Nothing.
+        ;;
+    cygwin*)
+        source ~/archive/mintty-colors-solarized-master/sol.dark
+        ;;
+esac
 
 # export PATH
 # PAtH=/cygdrive/c/emacs-24.3/bin/:$PATH
