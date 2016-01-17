@@ -85,7 +85,7 @@ case $OSTYPE in
         # Nothing.
         ;;
     cygwin*)
-        source ~/archive/mintty-colors-solarized-master/sol.dark
+        source ~/GitRepos/mintty-colors-solarized/sol.dark
         ;;
 esac
 

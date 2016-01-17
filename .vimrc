@@ -81,6 +81,9 @@ if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
 endif
 " ウインドウのタイトルバーにファイルのパス情報等を表示する
 set title
+" ウィンドウタイトルを保存/復元する
+let &t_ti .= "\e[22;0t"
+let &t_te .= "\e[23;0t"
 " コマンドラインモードで<Tab>キーによるファイル名補完を有効にする
 set wildmenu
 " 入力中のコマンドを表示する
