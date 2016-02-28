@@ -76,7 +76,7 @@ case $OSTYPE in
         alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
         alias ipconfig='ipconfig | nkf -w'
         alias ifconfig='ipconfig | nkf -w'
-        alias grep='grep -iEH --color=auto'
+        alias grep='grep -iE --color=auto'
         alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
         ;;
 esac
