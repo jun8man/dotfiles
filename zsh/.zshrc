@@ -77,6 +77,8 @@ case $OSTYPE in
         alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
         alias ipconfig='ipconfig | nkf -w'
         alias ifconfig='ipconfig | nkf -w'
+        alias grep='grep -iE --color=auto'
+        alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
         ;;
 esac
 
@@ -86,7 +88,7 @@ case $OSTYPE in
         # Nothing.
         ;;
     cygwin*)
-        source ~/archive/mintty-colors-solarized-master/sol.dark
+        source ~/GitRepos/mintty-colors-solarized/sol.dark
         ;;
 esac
 

@@ -81,6 +81,8 @@ if isdirectory(expand('~/.vim/bundle/vim-fugitive'))
 endif
 " ウインドウのタイトルバーにファイルのパス情報等を表示する
 set title
+" Vimを使ってくれてありがとう、を消す
+let &titleold=getcwd()
 " コマンドラインモードで<Tab>キーによるファイル名補完を有効にする
 set wildmenu
 " 入力中のコマンドを表示する
