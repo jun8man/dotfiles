@@ -68,6 +68,7 @@ case $OSTYPE in
     darwin*)
         alias ls='ls -FG'
         alias ll='ls -al'
+        alias myctags='/usr/local/bin/ctags -R -f'
         ;;
     cygwin*)
         alias vi='/usr/bin/vim'
