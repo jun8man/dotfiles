@@ -62,6 +62,20 @@ case $OSTYPE in
 esac
 
 #------------------------
+# key bind
+#------------------------
+case $OSTYPE in
+    cygwin*)
+        #### DELETE key
+        bindkey "^[[3~" delete-char
+        #### HOME key
+        bindkey "^[[1~" beginning-of-line
+        #### END key
+        bindkey "^[[4~" end-of-line
+        ;;
+esac
+
+#------------------------
 # エイリアス
 #------------------------
 case $OSTYPE in
@@ -79,6 +93,7 @@ case $OSTYPE in
         alias ifconfig='ipconfig | nkf -w'
         alias grep='grep -iE --color=auto'
         alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
+        alias ping='cocot ping'
         ;;
 esac
 
