@@ -95,6 +95,17 @@ case $OSTYPE in
         alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
         alias ping='cocot ping'
         ;;
+    linux*)
+        alias vi='/usr/bin/vim'
+        alias ls='ls -F --color=auto'
+        alias ll='ls -al'
+        alias st="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+        alias ipconfig='ipconfig | nkf -w'
+        alias ifconfig='ipconfig | nkf -w'
+        alias grep='grep -iE --color=auto'
+        alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
+        alias ping='cocot ping'
+        ;;
 esac
 
 # プロンプトのカラー表示を有効
@@ -131,5 +142,17 @@ case $OSTYPE in
         ;;
 esac
 
-export PATH="$HOME/.rbenv/bin:$PATH"
-eval "$(rbenv init -)"
+case $OSTYPE in
+  darwin*)
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+    ;;
+  cygwin*)
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    eval "$(rbenv init -)"
+    ;;
+  linux*)
+    # Nothing.
+    ;;
+esac
+
