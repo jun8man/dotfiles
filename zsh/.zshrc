@@ -4,7 +4,7 @@
 source ~/.zplug/init.zsh
 
 # 入力補完.
-zplug 'zsh-users/zsh-autosuggestions'
+zplug "zsh-users/zsh-autosuggestions"
 # 候補選択拡張.
 zplug "zsh-users/zsh-completions"
 # compinit 以降に読み込むようにロードの優先度を変更する（10~19にすれば良い）
@@ -16,7 +16,11 @@ zplug "b4b4r07/enhancd", use:enhancd.sh
 # ヒストリーサーチを便利に.
 zplug "zsh-users/zsh-history-substring-search", hook-build:"__zsh_version 4.3"
 # コマンドライン出力結果のインクリメントサーチ.
-zplug "peco/peco", as:command, from:gh-r
+case $OSTYPE in
+    darwin*)
+        zplug "peco/peco", as:command, from:gh-r
+    ;;
+esac
 
 # Pluginのチェックとインストール.
 if ! zplug check --verbose; then
