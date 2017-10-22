@@ -7,8 +7,8 @@ source ~/.zplug/init.zsh
 zplug "zsh-users/zsh-autosuggestions"
 # 候補選択拡張.
 zplug "zsh-users/zsh-completions"
-# compinit 以降に読み込むようにロードの優先度を変更する（10~19にすれば良い）
-zplug "zsh-users/zsh-syntax-highlighting", nice:10
+# compinit 以降に読み込むようにロードの優先度を変更する（0..3）
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 # peco/fzf/percol/zawなどのラッパー関数を提供するFW的なもの.
 zplug "mollifier/anyframe"
 # 移動強化系plugin.
@@ -23,18 +23,22 @@ case $OSTYPE in
 esac
 
 # Pluginのチェックとインストール.
-if ! zplug check --verbose; then
-  printf 'Install? [y/N]: '
-  if read -q; then
-    echo; zplug install
-  fi
+# .zxhrcに更新がなければチェックしない.
+if [ ~/.zplug/last_zshrc_check_time -ot /home/0000132382/GitRepos/dotfiles/zsh/.zshrc ]; then
+    touch ~/.zplug/last_zshrc_check_time
+    if ! zplug check --verbose; then
+      printf 'Install? [y/N]: '
+      if read -q; then
+        echo; zplug install
+      fi
+    fi
 fi
 
 zplug load --verbose
 
-HISTSIZE=50000
+HISTSIZE=500000
 HISTFILE=~/.zsh_history
-SAVEHIST=50000
+SAVEHIST=500000
 # 全履歴の一覧を出力する.
 function history-all { history -E 1 }
 # 履歴の共有化.
@@ -121,7 +125,9 @@ case $OSTYPE in
     ;;
   cygwin*)
     export PATH="$HOME/.rbenv/bin:$PATH"
-    eval "$(rbenv init -)"
+    if type rbenv > /dev/null 2>&1; then
+        eval "$(rbenv init -)"
+    fi
     ;;
   linux*)
     export PATH="$HOME/.rbenv/bin:$PATH"
@@ -129,3 +135,8 @@ case $OSTYPE in
     export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
     ;;
 esac
+
+# zsh起動速度チェック用.
+if type zprof > /dev/null 2>&1; then
+  zprof | less
+fi
