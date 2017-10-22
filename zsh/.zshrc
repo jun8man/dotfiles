@@ -1,6 +1,7 @@
 # .zplugが存在しなければインストールする.
 if [ ! -d ~/.zplug ]; then
     echo `curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh`
+    touch ~/.zplug/last_zshrc_check_time
 fi
 
 source ~/.zplug/init.zsh
