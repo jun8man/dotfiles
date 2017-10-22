@@ -1,6 +1,4 @@
-# 以下のコマンドでzplugをインストールしておくこと.
-# curl -sL zplug.sh/installer | zsh
-
+# .zplugが存在しなければインストールする.
 if [ ! -d ~/.zplug ]; then
     echo `curl -sL https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh`
 fi
