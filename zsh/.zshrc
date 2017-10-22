@@ -1,6 +1,10 @@
 # 以下のコマンドでzplugをインストールしておくこと.
 # curl -sL zplug.sh/installer | zsh
 
+if [ ! -d ~/.zplug ]; then
+    echo `curl -sL zplug.sh/installer | zsh`
+fi
+
 source ~/.zplug/init.zsh
 
 # 入力補完.
