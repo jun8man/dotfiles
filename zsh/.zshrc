@@ -137,6 +137,6 @@ case $OSTYPE in
 esac
 
 # zsh起動速度チェック用.
-if type zprof > /dev/null 2>&1; then
-  zprof | less
-fi
+# if type zprof > /dev/null 2>&1; then
+#   zprof | less
+# fi
