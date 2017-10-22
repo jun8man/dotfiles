@@ -26,7 +26,7 @@ esac
 
 # Pluginのチェックとインストール.
 # .zxhrcに更新がなければチェックしない.
-if [ ~/.zplug/last_zshrc_check_time -ot /home/0000132382/GitRepos/dotfiles/zsh/.zshrc ]; then
+if [ ~/.zplug/last_zshrc_check_time -ot ~/GitRepos/dotfiles/zsh/.zshrc ]; then
     touch ~/.zplug/last_zshrc_check_time
     if ! zplug check --verbose; then
       printf 'Install? [y/N]: '
