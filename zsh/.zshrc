@@ -106,6 +106,13 @@ case $OSTYPE in
 esac
 # 文字コード.
 export LANG=ja_JP.UTF-8
+
+# proxy
+# export HTTP_PROXY=http://proxy.rmt.sony.co.jp:10080
+# export HTTPS_PROXY=$HTTP_PROXY
+# export FTP_PROXY=$HTTP_PROXY
+# export NO_PROXY="127.0.0.1,localhost,192,168.*,git.example.com"
+
 # ssh-agent 用
 case $OSTYPE in
     cygwin*)
@@ -146,7 +153,7 @@ case $OSTYPE in
 #    eval "$(rbenv init -)"
     ;;
   cygwin*)
-    if [ -e /cydrive/C/Program Files/Java/jre1.8.0_151/bin ]; then
+    if [ -e /cydrive/C/Program\ Files/Java/jre1.8.0_151/bin ]; then
        export PATH=$PATH:"/cydrive/C/Program Files/Java/jre1.8.0_151/bin:"
     fi
    ;;
@@ -156,6 +163,9 @@ case $OSTYPE in
 #    export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
     ;;
 esac
+
+# 重複パスを登録しない
+typeset -U path cdpath fpath manpath
 
 # zsh起動速度チェック用.
 # if type zprof > /dev/null 2>&1; then
