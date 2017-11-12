@@ -139,6 +139,24 @@ case $OSTYPE in
     ;;
 esac
 
+# java
+case $OSTYPE in
+  darwin*)
+#    export PATH="$HOME/.rbenv/bin:$PATH"
+#    eval "$(rbenv init -)"
+    ;;
+  cygwin*)
+    if [ -e /cydrive/C/Program Files/Java/jre1.8.0_151/bin ]; then
+       export PATH=$PATH:"/cydrive/C/Program Files/Java/jre1.8.0_151/bin:"
+    fi
+   ;;
+  linux*)
+#    export PATH="$HOME/.rbenv/bin:$PATH"
+#    eval "$(rbenv init -)"
+#    export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
+    ;;
+esac
+
 # zsh起動速度チェック用.
 # if type zprof > /dev/null 2>&1; then
 #   zprof | less
