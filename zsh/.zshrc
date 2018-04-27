@@ -54,6 +54,16 @@ setopt nolistbeep
 # %d ディレクトリ名.
 PROMPT='[%F{5}%d%f]
 %F{3}%n@%m%f# '
+# vesion control systems の infoを追加.
+autoload -Uz vcs_info
+setopt prompt_subst
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "%F{yellow}!"
+zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
+zstyle ':vcs_info:*' formats "%F{green}%c%u[%b]%f"
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () { vcs_info }
+RPROMPT=$RPROMPT'${vcs_info_msg_0_}'
 # 補完侯補をEmacsのキーバインドで動き回る.
 zstyle ':completion:*:default' menu select=1
 # 補完の時に大文字小文字を区別しない.
@@ -87,6 +97,17 @@ case $OSTYPE in
         alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
         alias ping='cocot ping'
         ;;
+    msys*)
+        alias vi='/usr/bin/vim'
+        alias ls='ls -F --color=auto'
+        alias ll='ls -al'
+        alias subl="c:/Program\ Files/Sublime\ Text\ 3/sublime_text.exe"
+        alias ipconfig='ipconfig | nkf -w'
+        alias ifconfig='ipconfig | nkf -w'
+        alias grep='grep -iE --color=auto'
+        alias wm='c:/Program\ Files/WinMerge/WinMergeU.exe'
+        alias ping='cocot ping'
+	;;
     linux*)
         alias ls='ls -F --color=auto'
         alias ll='ls -al'
