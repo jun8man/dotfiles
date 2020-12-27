@@ -97,3 +97,16 @@ PATH=${JAVA_HOME}/bin:${PATH}
 
 # 重複パスを登録しない
 typeset -U path cdpath fpath manpath
+
+# git userの設定(repository毎)
+function gituser-personal {
+  git config user.name "nujamay"
+  git config user.email "junya0220yamashita@gmail.com"
+  git config --list
+}
+
+function gituser-company {
+  git config user.name "jun-yamashita"
+  git config user.email "Junya.Yamashita@sony.com"
+  git config --list
+}

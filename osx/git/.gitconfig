@@ -1,6 +1,7 @@
 [user]
-    name = junya
-    email = junya0220yamashita@gmail.com
+# executes gituser command as you like. ref) ~/.zshrc
+#    name = junya
+#    email = junya0220yamashita@gmail.com
 [core]
     excludesfile = ~/.gitignore
     pager = less -r
