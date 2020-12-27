@@ -1,11 +1,54 @@
 #! /bin/bash
-ln -s ~/GitRepos/dotfiles/.vimrc ~/.vimrc
-ln -s ~/GitRepos/dotfiles/.vim ~/.vim
-ln -s ~/GitRepos/dotfiles/zsh/.zshrc ~/.zshrc
-ln -s ~/GitRepos/dotfiles/zsh/.zshenv ~/.zshenv
-ln -s ~/GitRepos/dotfiles/zsh/.zplug ~/.zplug
-ln -s ~/GitRepos/dotfiles/.emacs.d ~/.emacs.d
-ln -s ~/GitRepos/dotfiles/git/.gitconfig ~/.gitconfig
-ln -s ~/GitRepos/dotfiles/git/.gitignore ~/.gitignore
-ln -s ~/GitRepos/dotfiles/.gemrc ~/.gemrc
-echo "finished."
+
+export FILENAME=$(basename $0)
+
+# usage
+function usage {
+  cat <<-EOF
+  $FILENAME makes dotfiles as symbolic link.
+
+  Usage:
+    $FILENAME [os type] [<options>]
+
+  Os type:
+    osx   for mac os
+    win   for windows os
+
+  Options:
+    --version, -v   print $FILENAME version
+    --help, -h      print this
+EOF
+}
+
+function version {
+  echo "$FILENAME version 0.0.1"
+}
+
+function link {
+  ln -s ~/Work/Repos/dotfiles/$1/vim/.vimrc ~/.vimrc
+  ln -s ~/Work/Repos/dotfiles/$1/vim/.vim/ ~/.vim
+  ln -s ~/Work/Repos/dotfiles/$1/zsh/.zshrc ~/.zshrc
+  ln -s ~/Work/Repos/dotfiles/$1/git/.gitconfig ~/.gitconfig
+  ln -s ~/Work/Repos/dotfiles/$1/git/.gitignore ~/.gitignore
+  echo "finished."
+}
+
+case $1 in
+  osx | win)
+    link $1
+  ;;
+
+  --version | -v)
+    version
+  ;;
+
+  --help | -h)
+    usage
+  ;;
+
+  *)
+    echo "[ERROR] Invalid subcommand $1"
+    usage
+    exit 1
+  ;;
+esac

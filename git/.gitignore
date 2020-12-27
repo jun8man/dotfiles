@@ -1,6 +1,0 @@
-# ignored file list
-*~
-.tags
-
-# .gitignore should be under control.
-!.gitignore
