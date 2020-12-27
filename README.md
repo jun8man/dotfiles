@@ -1,7 +1,4 @@
 # dotfiles
-========
-
-## Overview
 This is to control and share dotfiles with my several environments.
 
 ## Usage
