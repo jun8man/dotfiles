@@ -2,5 +2,22 @@
 *~
 .tags
 
+# OS dependent files
+#---------------------------
+.DS_Store
+Thumbs.db
+
+# Bundler specific
+#---------------------------
+/vendor/bundle/
+/.bundle/
+
+# Office specific
+~$*
+*.tmp
+
+# Vagrant specific
+.vagrant/
+
 # .gitignore should be under control.
 !.gitignore
