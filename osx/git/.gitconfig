@@ -1,0 +1,49 @@
+[user]
+    name = junya
+    email = junya0220yamashita@gmail.com
+[core]
+    excludesfile = ~/.gitignore
+    pager = less -r
+    editor = vim
+[color]
+	ui = auto
+[alias]
+# status.
+    st = status
+# show.
+    sh = show
+    sb = show-branch
+# stash.
+    sp = stash pop
+    ss = stash save
+# checkout.
+    co = checkout
+    cb = checkout -b	# branch を作成して checkout
+# commit.
+    cm = commit -v            # 変更点を表示しながら commit.
+    cma = commit -a -v        # ファイルの更新や削除を Index に加えつつ変更点を表示しながら commit.
+# cherry-pick.
+    chp = cherry-pick
+# log.
+    lp = log -p --decorate=full       # diff も一緒に出す.
+    lf = log --stat --decorate=full   # 変更されたファイルも一緒に出す.
+    tr = log --graph --pretty='format:%C(yellow)%h%Creset %s %Cgreen(%an)%Creset %Cred%d%Creset'  # tree 表示.
+# branch.
+    br = branch
+    ba = branch -a             # origin も含めた全ての branch を表示.
+    bm = branch --merged       # merge 済み branch のみ表示.
+    bn = branch --no-merged    # merge していない branch のみ表示.
+    bd = branch -D             # branch の削除.
+# diff.
+    dm = diff master           # master との diff.
+    dw = diff --color-words    # 単語単位色つけて diff.
+    dc = diff --cached         # add されているものとの diff.
+    ds = diff --staged         # 同上(1.6.1移行).
+    d1 = diff HEAD~            # HEAD から1つ前と diff.
+    d2 = diff HEAD~~           # HEAD から2つ前と diff.
+    d3 = diff HEAD~~~          # HEAD から3つ前と diff.
+    d4 = diff HEAD~~~~         # HEAD から4つ前と diff.
+    d5 = diff HEAD~~~~~        # HEAD から5つ前と diff.
+    d10 = diff HEAD~~~~~~~~~~  # HEAD から10前と diff.
+[push]
+    default = simple
