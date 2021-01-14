@@ -1,6 +1,7 @@
 #! /bin/bash
 
 export FILENAME=$(basename $0)
+export DIRNAME=$(pwd)
 
 # usage
 function usage {
@@ -9,6 +10,7 @@ function usage {
 
   Usage:
     $FILENAME [os type] [<options>]
+    ** run the command in the same directory as the script. **
 
   Os type:
     osx   for mac os
@@ -25,11 +27,11 @@ function version {
 }
 
 function link {
-  ln -s ~/Work/Repos/dotfiles/$1/vim/.vimrc ~/.vimrc
-  ln -s ~/Work/Repos/dotfiles/$1/vim/.vim/ ~/.vim
-  ln -s ~/Work/Repos/dotfiles/$1/zsh/.zshrc ~/.zshrc
-  ln -s ~/Work/Repos/dotfiles/$1/git/.gitconfig ~/.gitconfig
-  ln -s ~/Work/Repos/dotfiles/$1/git/.gitignore ~/.gitignore
+  ln -s $DIRNAME/$1/vim/.vimrc ~/.vimrc
+  ln -s $DIRNAME/$1/vim/.vim/ ~/.vim
+  ln -s $DIRNAME/$1/zsh/.zshrc ~/.zshrc
+  ln -s $DIRNAME/$1/git/.gitconfig ~/.gitconfig
+  ln -s $DIRNAME/$1/git/.gitignore ~/.gitignore
   echo "finished."
 }
 

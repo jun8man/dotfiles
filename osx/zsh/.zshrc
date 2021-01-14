@@ -91,22 +91,44 @@ alias ras='sudo openconnect --user=0000132382 --cafile=/Users/yamajun/Documents/
 # 文字コード.
 export LANG=ja_JP.UTF-8
 
-# java
-export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
-PATH=${JAVA_HOME}/bin:${PATH}
-
 # 重複パスを登録しない
 typeset -U path cdpath fpath manpath
 
 # git userの設定(repository毎)
+## 個人用
 function gituser-personal {
   git config user.name "nujamay"
   git config user.email "junya0220yamashita@gmail.com"
   git config --list
 }
-
+## 会社用
 function gituser-company {
   git config user.name "jun-yamashita"
   git config user.email "Junya.Yamashita@sony.com"
   git config --list
+}
+
+# 指定したgit user名に対応するすべてのcommitに対してauthorとcommitterを変更する
+## 個人用
+function gitauthor_personal {
+git filter-branch --env-filter '
+if [ $GIT_COMMIT == "jun-yamashita" ] || [ $GIT_COMMIT == "Junya Yamashita" ]c;
+then
+    export GIT_AUTHOR_NAME="nujamay"
+    export GIT_AUTHOR_EMAIL="junya0220yamashita@gmail.com"
+    export GIT_COMMITTER_NAME="nujamay"
+    export GIT_COMMITTER_EMAIL="junya0220yamashita@gmail.com"
+fi'
+}
+
+## 会社用
+function gitauthor_company {
+git filter-branch --env-filter '
+if [ $GIT_COMMIT == "nujamay" ] || [ $GIT_COMMIT == "Junya Yamashita" ];
+then
+    export GIT_AUTHOR_NAME="jun-yamashita"
+    export GIT_AUTHOR_EMAIL="Junya.Yamashita@sony.com"
+    export GIT_COMMITTER_NAME="jun-yamashita"
+    export GIT_COMMITTER_EMAIL="Junya.Yamashita@sony.com"
+fi'
 }

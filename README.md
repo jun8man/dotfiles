@@ -2,7 +2,7 @@
 This is to control and share dotfiles with my several environments.
 
 ## Usage
-See below.
+Run the command in the same directory as the script.
 
 ```shell
 ./dotfilesLink.sh [os type] [<options>]

@@ -21,3 +21,13 @@ Thumbs.db
 
 # .gitignore should be under control.
 !.gitignore
+
+# Java
+.gradle
+.idea
+
+# binary files
+out/
+
+# specific files
+Head-First-Design-Patterns-master.iml

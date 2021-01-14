@@ -1,0 +1,10 @@
+#!/bin/sh
+if [ -z "`git config --local user.name`" ] ; then
+  echo '## No Name! Use gituser-personal / gituser-company before commit! ##'
+  exit 1
+fi
+
+if [ -z "`git config --local user.email`" ] ; then
+  echo '## No Email Address! Use gituser-personal / gituser-company before commit! ##'
+  exit 1
+fi
